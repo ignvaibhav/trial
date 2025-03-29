@@ -6,14 +6,16 @@ try {
 
     let data = await fetch('http://localhost:3000/vaibhav')
     if(!data.ok){
-        return 'network issue'
+        body.innerHTML = 'Network issue: ' + response.statusText; 
+        return;
     }
-    let response = data.text()
+    let response = await data.text()
     body.innerHTML(response)
 
 
 } catch (error) {
     console.log(error);
+    body.innerHTML = 'An error occurred: ' + error.message;
     
 }
 
